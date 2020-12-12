@@ -34,7 +34,7 @@ So we got the username that is -> **R1ckRul3s**
 Now we need to find the password and a page to login.
 
 -----------
-## 2 - Let's see that we have more directories on this web page
+## 2 - Let's see if we got more directories on this web page
 
 Let's try to scan it with gobuster.
 
