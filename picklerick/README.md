@@ -1,20 +1,7 @@
 ## PICKLERICK ROOM
 
+Link -> https://tryhackme.com/room/picklerick
 
--------------------------------
-
-
-    Note to self, remember username!
-
-    Username: R1ckRul3s
-
-
-----------------------------------
-
-## PÁGINAS 
-
-/assets
-/robots.txt -> Wubbalubbadubdub
-
--------------------------------
+Difficulty -> Easy
+------------------------------------------------
 
